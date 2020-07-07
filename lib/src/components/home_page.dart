@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../model/size_config.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _height = MediaQuery.of(context).size.height;
+    SizeConfig().init(context);
     return Scaffold(
       body: GestureDetector(
         onTap: () => Navigator.of(context).pushNamed('/calcPage'),
@@ -11,7 +13,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Padding(
-                padding: EdgeInsets.only(top: _height / 3),
+                padding: EdgeInsets.only(top: SizeConfig.height / 3),
                 child: const Text.rich(
                   TextSpan(
                       style: TextStyle(
@@ -32,8 +34,8 @@ class HomePage extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: _height / 6,
-                bottom: _height / 6,
+                top: SizeConfig.height / 6,
+                bottom: SizeConfig.height / 6,
               ),
               child: const Text(
                 'Tap anywhere',

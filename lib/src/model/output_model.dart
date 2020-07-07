@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class OutputModel with ChangeNotifier{
-
   String _output = '0';  // 表記
   String _tmp = '';  // オペランド
 
@@ -87,7 +86,7 @@ class OutputModel with ChangeNotifier{
                   _rpnStack.first,
                 ),
             );
-            print(_noStack);
+            // ignore: cascade_invocations
             _noStack
               ..removeAt(_len-2)
               ..removeAt(_len-2);

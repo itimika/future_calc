@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:future_calc/components/calculatePage/block1.dart';
-import 'package:future_calc/components/calculatePage/block2.dart';
-import 'package:future_calc/components/calculatePage/block3.dart';
-import 'package:future_calc/components/calculatePage/block4.dart';
-import 'package:future_calc/model/output_model.dart';
-import 'package:future_calc/model/size_config.dart';
+import '../model/output_model.dart';
+import '../model/size_config.dart';
+import '../widgets/block1.dart';
+import '../widgets/block2.dart';
+import '../widgets/block3.dart';
+import '../widgets/block4.dart';
 
 class CalculatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -239,10 +238,7 @@ class _ResetPoint extends StatelessWidget {
   Widget build(BuildContext context) {
     return DragTarget<dynamic>(
       builder: (context, candidateData, rejectedData) =>
-          const SizedBox(
-            width: 80,
-            height: 80,
-          ),
+          const SizedBox(width: 80, height: 80),
       onWillAccept: (dynamic _) {
         Provider.of<OutputModel>(context, listen: false).resetAFrag();
         return !(Provider.of<OutputModel>(context, listen: false).frag == 0);
