@@ -37,9 +37,9 @@ class OutputModel with ChangeNotifier{
       _isNullAtAll = false;
     } else {
       // 「0」 → 「a」と入力した際, 「0a」という表記を避ける.
-      double.tryParse(_output) != 0
-          ? _output = _output + _no
-          : _output = _no;
+      double.tryParse(_output) == 0 && _output != '0.'
+          ? _output = _no
+          : _output = _output + _no;
     }
     notifyListeners();
 
