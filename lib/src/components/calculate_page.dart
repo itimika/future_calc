@@ -218,13 +218,9 @@ class _BuildPanel extends StatelessWidget {
         builder: (_, model, __) {
           return RaisedButton(
             onPressed: model.changeHelp,
+            elevation: 10,
             color: Colors.white,
-            shape: const CircleBorder(
-              side: BorderSide(
-                color: Colors.black,
-                width: 1,
-              ),
-            ),
+            shape: const CircleBorder(),
           );
         },
       ),
