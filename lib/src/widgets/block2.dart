@@ -5,14 +5,10 @@ import '../model/output_model.dart';
 import '../model/size_config.dart';
 
 Widget block2() {
-  return Stack(
-    children: <Widget>[
-      Positioned(
-        top: SizeConfig.quarterSize,
-        left: SizeConfig.threeQuarterSize,
-        child: const _FragPoint(),
-      ),
-    ],
+  return Positioned(
+    top: SizeConfig.quarterSize,
+    left: SizeConfig.threeQuarterSize,
+    child: const _FragPoint(),
   );
 }
 

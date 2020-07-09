@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../model/back_image.dart';
 import '../model/output_model.dart';
 import '../model/size_config.dart';
 import '../widgets/block1.dart';
@@ -54,9 +55,13 @@ class ControlArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Provider.of<OutputModel>(context).showHelp
-            ? Image.asset('assets/help2.png')
-            : const SizedBox(),
+        Consumer<OutputModel>(
+          builder: (_, model, __) {
+            return model.showHelp
+                ? backImage
+                : const SizedBox();
+          },
+        ),
         SizedBox(
           height: SizeConfig.width,
           width: SizeConfig.width,
@@ -104,6 +109,7 @@ class _BuildDraggable extends StatelessWidget {
     );
   }
 
+  // ドラッグ先の座標による入力の判定
   void inputCommand(BuildContext context, DraggableDetails detail) {
     switch (Provider.of<OutputModel>(context, listen: false).frag) {
       case 1:
@@ -214,15 +220,11 @@ class _BuildPanel extends StatelessWidget {
     return ButtonTheme(
       height: 80,
       minWidth: 80,
-      child: Consumer<OutputModel>(
-        builder: (_, model, __) {
-          return RaisedButton(
-            onPressed: model.changeHelp,
-            elevation: 10,
-            color: Colors.white,
-            shape: const CircleBorder(),
-          );
-        },
+      child: RaisedButton(
+        onPressed: Provider.of<OutputModel>(context, listen: false).changeHelp,
+        elevation: 10,
+        color: Colors.white,
+        shape: const CircleBorder(),
       ),
     );
   }
