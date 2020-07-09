@@ -82,14 +82,24 @@ class ControlArea extends StatelessWidget {
               Positioned(
                 top: SizeConfig.halfSize,
                 left: SizeConfig.halfSize,
-                child: const _BuildDraggable(
-                  child: _BuildPanel(),
+                child: _BuildDraggable(
+                  child: _buildPanel(context),
                 ),
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+  Widget _buildPanel(BuildContext context) {
+    return MaterialButton(
+      height: 80,
+      minWidth: 80,
+      onPressed: Provider.of<OutputModel>(context, listen: false).changeHelp,
+      elevation: 10,
+      color: Colors.white,
+      shape: const CircleBorder(),
     );
   }
 }
@@ -210,23 +220,6 @@ class _BuildDraggable extends StatelessWidget {
         break;
     }
     Provider.of<OutputModel>(context, listen: false).frag = 0;
-  }
-}
-
-class _BuildPanel extends StatelessWidget {
-  const _BuildPanel();
-  @override
-  Widget build(BuildContext context) {
-    return ButtonTheme(
-      height: 80,
-      minWidth: 80,
-      child: RaisedButton(
-        onPressed: Provider.of<OutputModel>(context, listen: false).changeHelp,
-        elevation: 10,
-        color: Colors.white,
-        shape: const CircleBorder(),
-      ),
-    );
   }
 }
 
